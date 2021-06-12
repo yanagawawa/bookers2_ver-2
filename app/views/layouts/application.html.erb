@@ -12,6 +12,7 @@
   <body>
     <% if user_signed_in? %>
       <li>
+        <!--ログアウトページのコード-->
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
