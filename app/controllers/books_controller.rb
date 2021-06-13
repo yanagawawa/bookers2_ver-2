@@ -22,6 +22,5 @@ class BooksController < ApplicationController
 
     def destroy
 
-
     end
 end

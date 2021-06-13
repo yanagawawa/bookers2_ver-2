@@ -10,21 +10,42 @@
   </head>
 
   <body>
+    <header>
+    <%= link_to "BOOKERS", root_path %>
+
     <% if user_signed_in? %>
+      <li>
+        <%= link_to "ホーム", user_path(current_user) %>
+      </li>
+      <li>
+        <%= link_to "ユーザー一覧", users_path %>
+      </li>
+      <li>
+        <%= link_to "投稿一覧", books_path %>
+      </li>
       <li>
         <!--ログアウトページのコード-->
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
+        <%= link_to "ホーム", root_path %>
+      </li>
+      <li>
+        <%= link_to "アバウト", about_path %>
+      </li>
+      <li>
         <%= link_to "新規登録", new_user_registration_path %>
       </li>
       <li>
         <%= link_to "ログイン", new_user_session_path %>
       </li>
-    <% end %>    
-    
+     
+    <% end %>
+   </header>
 
     <%= yield %>
+    
+    <footer>Made in Yanagawa</footer>
   </body>
 </html>
