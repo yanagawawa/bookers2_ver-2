@@ -9,40 +9,43 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-    <%= link_to "BOOKERS", root_path %>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column"></div>
+      <header class="mb-auto">
+      <%= link_to "BOOKERS", root_path, class: "float-md-start mb-0" %>
+  
+      <% if user_signed_in? %>
+       <nav class="nav nav-masthed justify-content-center float-md-end">
+        <nav>
+          <%= link_to "ホーム", user_path(current_user), class: "nav-link" %>
+        </nav>
+        <li>
+          <%= link_to "ユーザー一覧", users_path, class: "nav-link" %>
+        </li>
+        <li>
+          <%= link_to "投稿一覧", books_path, class: "nav-link" %>
+        </li>
+        <li>
+          <!--ログアウトページのコード-->
+          <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link", method: :delete %>
+        </li>
+       </nav>
+      <% else %>
+        <li>
+          <%= link_to "ホーム", root_path %>
+        </li>
+        <li>
+          <%= link_to "アバウト", about_path %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_user_session_path %>
+        </li>
 
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ホーム", user_path(current_user) %>
-      </li>
-      <li>
-        <%= link_to "ユーザー一覧", users_path %>
-      </li>
-      <li>
-        <%= link_to "投稿一覧", books_path %>
-      </li>
-      <li>
-        <!--ログアウトページのコード-->
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "ホーム", root_path %>
-      </li>
-      <li>
-        <%= link_to "アバウト", about_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-
-    <% end %>
-   </header>
+       <% end %>
+     </header>
 
     <%= yield %>
 
