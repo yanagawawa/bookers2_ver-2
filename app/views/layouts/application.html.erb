@@ -17,11 +17,11 @@
           <h3 class="float-md-start mb-0"><%= link_to "BOOKERS", root_path, class: "text-white" %></h3>
           <nav class="nav nav-masthead justify-content-center float-md-end">
             <% if user_signed_in? %>
-            <%= link_to "ホーム", user_path(current_user), class: "nav-link active" %>
-            <%= link_to "ユーザー一覧", users_path, class: "nav-link" %>
-            <%= link_to "投稿一覧", books_path, class: "nav-link" %>
+            <%= link_to "ホーム", user_path(current_user), class: "nav-link text-white active" %>
+            <%= link_to "ユーザー一覧", users_path, class: "nav-link text-white" %>
+            <%= link_to "投稿一覧", books_path, class: "nav-link text-white" %>
             <!--ログアウトページのコード-->
-            <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link", method: :delete %>
+            <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link text-white", method: :delete %>
             <% else %>
             <%= link_to "ホーム", root_path, class: "nav-link text-white" %>
              <%= link_to "アバウト", about_path, class: "nav-link text-white" %>
@@ -32,12 +32,12 @@
         </div>
       </header>
        <%= yield %>
-    
+
 
       <footer class="mt-auto text-white-50">
         <p>Made in Yanagawa</p>
       </footer>
     </div>
    </body>
-   
+
 </html>
