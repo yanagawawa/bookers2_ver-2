@@ -2,7 +2,21 @@
   <div class="row">
     <div class="col-md-3">
       <h2>ユーザー情報</h2>
+      <!--プロフィールイメージを表示するためのコード。プロフィール画像を登録していない場合のfallbackもサイズ指定が必須-->
        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
+       <table class="table">
+         <tbody>
+           <tr>
+           <tr>
+             <th class="">名前</th>
+             <th><%= @users.name %></th>
+           </tr>
+           <tr>
+             <th>プロフィール</th>
+             <th><%= @users.introduction %></th>
+           </tr>
+         </tbody>
+       </table>
       <h2 class="mt-3">新規投稿</h2>
     </div>
     <div class="col-md-8 offset-md-1">
