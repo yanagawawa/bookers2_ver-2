@@ -1,0 +1,36 @@
+ <div class="col-md-3">
+      <h2>ユーザー情報</h2>
+      <!--プロフィールイメージを表示するためのコード。プロフィール画像を登録していない場合のfallbackもサイズ指定が必須-->
+       <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100', class: "m-2 attachment user profile_image" %>
+       <table class="table">
+         <tbody>
+           <tr></tr>
+           <tr>
+             <th class="text-white">名前</th>
+             <th class="text-white"><%= user.name %></th>
+           </tr>
+           <tr>
+             <th class="text-white">プロフィール</th>
+             <th class="text-white"><%= user.introduction %></th>
+           </tr>
+         </tbody>
+       </table>
+       <div class="row">
+         <%= link_to"",edit_user_path(user), class:"fas fa-user-cog btn btn-outline-light btn-block" %>
+       </div>
+      <h2 class="mt-3">新規投稿</h2>
+      <!--新規投稿フォームの作成-->
+      <%= form_with model:book, local:true do |f| %>
+       <div class="form-group">
+         <label>本の題名</label>
+         <%= f.text_field :title %>
+       </div>
+       <div class="form-group">
+         <label>本の感想</label>
+         <%= f.text_area :body %>
+       </div>
+       <div class="form-group">
+         <%= f.submit '投稿', class: "btn btn-success" %>
+       </div>
+       <% end %>
+    </div>
