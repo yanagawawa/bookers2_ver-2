@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
 
     def create
-
     end
 
     def index
@@ -22,5 +21,11 @@ class BooksController < ApplicationController
 
     def destroy
 
+    end
+
+    private
+
+    def user_params
+      params.require(:book).permit(:title, :body)
     end
 end
