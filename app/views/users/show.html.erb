@@ -54,6 +54,7 @@
               <td>
                   <!--ユーザー画像はuser_showへのリンク-->
                 <%= link_to user_path(@users.id) do %>
+
                  <%= attachment_image_tag @users, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class: "m-2 attachment user profile_image" %>
                 <% end %>
               </td>
