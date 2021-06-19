@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
     def create
-        # 何を入れるのか（book_params）を入れないと、空のままviewに送ってしまう
+        # 何を入れるのか。ストロングパラメーター,privateの（book_params）を入れないと、空のままviewに送ってしまう
         @book = Book.new(book_params)
         # 誰が投稿したのかを識別するために、idを指定
         @book.user_id = current_user.id
@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     end
 
     def edit
-
+        @book = Book.find(params[:id])
     end
 
     def update
