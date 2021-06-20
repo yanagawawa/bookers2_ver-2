@@ -16,6 +16,7 @@
              <td><%= link_to @books.title,book_path(@books) %></td>
              <td class="text-white"><%= @books.body %></td>
              <!--ログインしているユーザーのshowページだった場合表示される-->
+             もし、ユーザーのIDがログインしているユーザーと同じだったら
               <% if @user.id == current_user.id %>
              <td><%= link_to "編集",edit_book_path(@books) %></td>
              <td><%= link_to "削除",book_path(@books), method: :delete %></td>
