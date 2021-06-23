@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   # 画像アップ用のメソッド（attachment）を追加してフィールド名に（profile_image）を指定この時、idは抜く。※refileのルール
   attachment :profile_image
+  #1:nの関係userとbook_commentとの関連付け。関連したuserが消されたらコメントも消える
+  has_many :book_comments, dependent: :destroy
 end
