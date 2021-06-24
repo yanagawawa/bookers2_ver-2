@@ -21,15 +21,21 @@
              <td><%= link_to "削除",book_path(@books), method: :delete %></td>
              <% end %>
            </tr>
-           <div class="comments">
-             <p>コメント件数:<%= @books.book_comments.count %></p>
-             <table class="table">
-               <% @books .book_comments.each do |book_comments| %>
-               <% end %>
-             </table>
-           </div>
          </tbody>
        </table>
+       <!--コメント作成機能-->
+       <div class="comments">
+         <% if @books.book_comments.count != 0 then %>
+         <p>コメント件数:<%= @books.book_comments.count %></p>
+         <% else %>
+         <p>コメント無し</p>
+         <% end %>
+         <table class="table">
+           <% @books .book_comments.each do |book_comments| %>
+             <%= attachment_image_tag book_comments.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class: "m-2 attachment user profile_image" %>
+            <% end %>
+          </table>
+        </div>
      </div>
   </div>
 </div>
