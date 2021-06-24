@@ -25,15 +25,45 @@
        </table>
        <!--コメント作成機能-->
        <div class="comments">
-         <% if @books.book_comments.count != 0 then %>
-         <p>コメント件数:<%= @books.book_comments.count %></p>
-         <% else %>
+         <h2 class="mt-3">新規投稿</h2>
+      <!--コメント投稿フォームの作成-->
+         <%= form_with(model:[@book, @book_comment],local: true) do |f| %>
+       <div class="form-group">
+         <label>コメント</label>
+         <%= f.text＿area :comment, rows:'2',placeholder: "コメントをここに" %>
+       </div>
+       <div class="form-group">
+         <%= f.submit 'コメント投稿', class: "btn btn-success" %>
+       </div>
+       <% end %>
+         <!--もし、コメントが無ければ、コメント無しとビューで表記し、あれば何個コメントがあるか表記するコード-->
+         <% if @books.book_comments.count == 0 then %>
          <p>コメント無し</p>
-         <% end %>
+         <% else %>
+         <p>コメント件数:<%= @books.book_comments.count %></p>
          <table class="table">
-           <% @books .book_comments.each do |book_comments| %>
-             <%= attachment_image_tag book_comments.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class: "m-2 attachment user profile_image" %>
-            <% end %>
+           <thead>
+             <tr>
+               <th></th>
+               <th>コメント</th>
+               <th colspan="2"></th>
+             </tr>
+           </thead>
+           <tbody>
+             <% @books.book_comments.each do |book_comments| %>
+               <tr>
+                 <td>
+                   <%= attachment_image_tag book_comments.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class: "m-2 attachment user profile_image" %>
+                   <br><%= book_comments.user.name %>
+                 </td>
+                 <td><%= book_comments.comments %></td>
+                 <!--コメントの、投稿日時を呼び出すコード-->
+                 <td><%= book_comments.created_at.strftime('%Y-%m-%d H:%M') %></td>
+                 <td></td>
+               </tr>
+             <% end %>
+           </tbody>
+          <% end %>
           </table>
         </div>
      </div>
