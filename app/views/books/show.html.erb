@@ -2,7 +2,7 @@
   <div class="row">
     <!--部分テンプレート-->
     <%= render 'books/new_form', user: @user, book: @book %>
-    <!--投稿一覧のコード-->
+    <!--投稿詳細のコード-->
      <div class="col-md-8 offset-md-1">
        <h2>投稿詳細</h2>
        <table class="table">
@@ -16,12 +16,18 @@
              <td><%= link_to @books.title,book_path(@books) %></td>
              <td class="text-white"><%= @books.body %></td>
              <!--ログインしているユーザーのshowページだった場合表示される-->
-             もし、ユーザーのIDがログインしているユーザーと同じだったら
-              <% if @user.id == current_user.id %>
+             <% if @user.id == current_user.id %>
              <td><%= link_to "編集",edit_book_path(@books) %></td>
              <td><%= link_to "削除",book_path(@books), method: :delete %></td>
              <% end %>
            </tr>
+           <div class="comments">
+             <p>コメント件数:<%= @books.book_comments.count %></p>
+             <table class="table">
+               <% @books .book_comments.each do |book_comments| %>
+               <% end %>
+             </table>
+           </div>
          </tbody>
        </table>
      </div>
