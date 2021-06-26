@@ -44,20 +44,20 @@
            <thead>
              <tr>
                <th></th>
-               <th>コメント</th>
+               <th class="text-white">コメント</th>
                <th colspan="2"></th>
              </tr>
            </thead>
            <tbody>
-             <% @books.book_comments.each do |book_comments| %>
+             <% @books.book_comments.each do |book_comment| %>
                <tr>
-                 <td>
-                   <%= attachment_image_tag book_comments.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class: "m-2 attachment user profile_image" %>
-                   <br><%= book_comments.user.name %>
+                 <td class="text-white">
+                   <%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40', class: "m-2 attachment user profile_image" %>
+                   <br><%= book_comment.user.name %>
                  </td>
-                 <td><%= book_comments.comments %></td>
+                 <td class="text-white"><%= book_comment.comment %></td>
                  <!--コメントの、投稿日時を呼び出すコード-->
-                 <td><%= book_comments.created_at.strftime('%Y-%m-%d H:%M') %></td>
+                 <td class="text-white"><%= book_comment.created_at.strftime('%Y-%m-%d %M:%S') %></td>
                  <td></td>
                </tr>
              <% end %>
