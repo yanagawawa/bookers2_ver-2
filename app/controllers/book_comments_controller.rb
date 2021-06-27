@@ -1,5 +1,6 @@
 class BookCommentsController < ApplicationController
   def create
+    # book_idのルートを確認すると、commentはbookに対してネストしているので、idの部分が特殊
     book = Book.find(params[:book_id])
     comment = current_user.book_comments.new(book_comment_params)
     # コメントテーブルのbook_idと投稿のidが一緒だよ
@@ -9,7 +10,8 @@ class BookCommentsController < ApplicationController
   end
 
   def destroy
-
+    BookComment.find_by(id: params[:id],book_id: params[:book_id]).destroy
+    redirect_to book_path(params[:book_id])
   end
 
   private
