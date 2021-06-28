@@ -17,8 +17,8 @@
              <td class="text-white"><%= @books.body %></td>
              <!--ログインしているユーザーのshowページだった場合表示される-->
              <% if @user.id == current_user.id %>
-             <td><%= link_to "編集",edit_book_path(@books) %></td>
-             <td><%= link_to "削除",book_path(@books), method: :delete %></td>
+             <td><%= link_to "編集",edit_book_path(@books),class: "btn btn-info" %></td>
+             <td><%= link_to "削除",book_path(@books),class: "btn btn-danger", method: :delete %></td>
              <% end %>
            </tr>
          </tbody>
@@ -59,7 +59,11 @@
                  <td class="text-white"><%= book_comment.comment %></td>
                  <!--コメントの、投稿日時を呼び出すコード-->
                  <td class="text-white"><%= book_comment.created_at.strftime('%Y-%m-%d %M:%S') %></td>
-                 <td> <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment), method: :delete %></td>
+                 <% if @user.id == current_user.id %>
+                 <td> <%= link_to "削除", book_book_comment_path(book_comment.book, book_comment),class: "btn btn-danger", method: :delete %></td>
+                 <% else %>
+                 <td></td>
+                 <% end %>
                </tr>
              <% end %>
            </tbody>
