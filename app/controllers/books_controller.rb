@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+# インスタンス変数とローカル変数の違い。色々あるけど、ビューに渡すか渡さないかだよ
     def create
         # 何を入れるのか。ストロングパラメーター,privateの（book_params）を入れないと、空のままviewに送ってしまう
         @book = Book.new(book_params)
