@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    root to: 'homes#top'
   # aboutページのルーティング
    get 'about' => 'homes#about'
-
+# resourcesで必要なアクションとビューだけを用意する
    resources :users, only: [:index, :show, :edit, :update]
    # 「ネストする」ブックに対しての子要素となる
    resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do
