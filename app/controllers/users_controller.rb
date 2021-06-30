@@ -17,10 +17,13 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @book = Bool.find(params[:id])
   end
 
   def update
-    @book = Book.new
+    @book = Book.(params[:id])
+    @book = Book.update(book_params)
+    redirect_to book_path(@book.id)
   end
 
    private
